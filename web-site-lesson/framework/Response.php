@@ -1,7 +1,5 @@
 <?php
 
-namespace Framework;
-
 class Response
 {
     private string $content;
@@ -42,5 +40,9 @@ class Response
 
     public function setLayoutPath($path) {
         $this->layoutPath = $path;
+    }
+
+    public function getLayoutPath():string{
+        return $this->layoutPath;
     }
 }

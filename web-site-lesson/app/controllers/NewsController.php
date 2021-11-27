@@ -1,12 +1,8 @@
 <?php
-
 declare(strict_types=1);
-
-namespace App\Controllers;
-
 final class NewsController extends AbstractController
 {
-    public function index() {
+    public function index():Response {
 
         $result = News::findAll();
 
@@ -19,13 +15,13 @@ final class NewsController extends AbstractController
         return $r;
     }
 
-    public function get($id) {
+    public function get($id):Response {
 
         /** @var News $model */
         $model = News::findByPk($id);
 
         //------------------------------------------------------------------
-        $content = loadView(__DIR__."/../views/view.php", [
+        $content = loadView(__DIR__."/../views/read.php", [
             'news' => $model
         ]);
         //------------------------------------------------------------------
@@ -35,7 +31,7 @@ final class NewsController extends AbstractController
     }
 
 
-    public function post() {
+    public function post():Response {
         /** @var PDO $db */
         $db = $this->app->get('db')->getConnection();
 

@@ -1,24 +1,24 @@
 <div class="row g-5">
     <div class="col-md-8">
-<!--        <h3 class="pb-4 mb-4 fst-italic border-bottom">-->
-<!--            From the Firehose-->
-<!--        </h3>-->
+        <!--        <h3 class="pb-4 mb-4 fst-italic border-bottom">-->
+        <!--            From the Firehose-->
+        <!--        </h3>-->
         <?php
         /**
          * @var News[] $news
          */
-            foreach ($news as $s) {
-        ?>
-                <article class="blog-post">
+        foreach ($news as $s) {
+            ?>
+            <article class="blog-post">
 
-                    <h2 class="blog-post-title"><?=$s->title?></h2>
-                    <p class="blog-post-meta"><?=$s->date?> by <a href="#"><?=$s->author?>></a></p>
+                <h2 class="blog-post-title"><?= $s->title ?></h2>
+                <p class="blog-post-meta"><?= $s->date ?> by <a href="#"><?= $s->author ?></a></p>
 
-                    <p><?=$s->body?></p>
-                    <hr>
-                </article>
-        <?php
-            }
+                <p><?= $s->body ?></p>
+                <hr>
+            </article>
+            <?php
+        }
         ?>
 
         <nav class="blog-pagination" aria-label="Pagination">
@@ -32,7 +32,8 @@
         <div class="position-sticky" style="top: 2rem;">
             <div class="p-4 mb-3 bg-light rounded">
                 <h4 class="fst-italic">About</h4>
-                <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+                <p class="mb-0">Customize this section to tell your visitors a little bit about your publication,
+                    writers, content, or something else entirely. Totally up to you.</p>
             </div>
 
             <div class="p-4">

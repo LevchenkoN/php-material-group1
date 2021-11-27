@@ -1,14 +1,12 @@
 <?php
-
-namespace App\Models;
-
+declare(strict_types=1);
 abstract class Model
 {
     protected string $table;
 
     protected array $attributes = [];
 
-    protected function getTable() {
+    protected function getTable():string {
         return $this->table;
     }
 
@@ -36,7 +34,6 @@ abstract class Model
             }
             $models[] = $model;
         }
-
         return $models;
     }
 

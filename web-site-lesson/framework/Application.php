@@ -1,10 +1,5 @@
 <?php
 
-namespace Framework;
-use Framework\ServiceProviders\ServiceProviderInterface;
-use Framework\ServiceProviders\ConfigServiceProvider;
-use Framework\ServiceProviders\DatabaseServiceProvider;
-
 class Application
 {
     private array $container;
@@ -28,14 +23,6 @@ class Application
 
     public static function getApp() {
         return self::$app;
-    }
-
-    /**
-     * @return array
-     */
-    public function getContainer(): array
-    {
-        return $this->container;
     }
 
     public function add(string $name, $dependency) {
@@ -86,31 +73,33 @@ class Application
 
                     list($handlerClass, $handlerMethod) = explode("😋", $handler);
 
-                    $callableObj = new $handlerClass($this);
+                    $callableObg = new $handlerClass($this);
 
                     $funcParams = array_splice($matches, 1);
 
                     try {
                         /** @var Response $response */
-                        $response = call_user_func_array([$callableObj, $handlerMethod], $funcParams);
-                    } catch (\ValidateException $e) {
+                        $response = call_user_func_array([$callableObg, $handlerMethod], $funcParams);
+                    } catch (ValidateException $e) {
                         // 400 validation error с определеным стилем страницы
                         echo $e->getMessage();
                         die();
-                    } catch (\PDOException $e) {
+                    } catch (PDOException $e) {
                         // 500 ошибка сервера
                         echo $e->getMessage();
                         die();
                     }
 
-                    $response->setLayoutPath($this->get("config")->get('app.layout'));
-
-                    if (property_exists($callableObj, "layout")) {
-                        if (!empty($callableObj->layout)) {
-                            $response->setLayoutPath($callableObj->layout);
-                        }
+                    if ($handlerClass === LoginController::class || $handlerClass === SignupController::class
+                        || $handlerClass === AdminController::class || $handlerClass === EditController::class
+                        || $handlerClass === DeleteController::class || $handlerClass === ReadController::class
+                        || $handlerClass === BrickController::class){
+                        $response->getLayoutPath();
                     }
 
+                    else{
+                        $response->setLayoutPath($this->get("config")->get('app.layout'));
+                    }
                     return $response;
                 }
             }

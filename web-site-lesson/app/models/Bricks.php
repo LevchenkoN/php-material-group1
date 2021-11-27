@@ -4,10 +4,10 @@
  * @property $id
  * @property $title
  * @property $date
- * @property $author
  * @property $body
+ * @property $picture
  */
-class News extends Model
+class Bricks extends Model
 {
-    protected string $table = "news";
+    protected string $table = "bricks";
 }

@@ -1,7 +1,5 @@
 <?php
 
-namespace Framework;
-
 class Arr
 {
     private array $data;

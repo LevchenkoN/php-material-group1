@@ -1,17 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Framework\ServiceProviders;
-
 abstract class BaseServiceProvider
 {
-    protected \Framework\Application $app;
+    protected Application $app;
 
     /**
-     * @param \Framework\Application $app
+     * @param Application $app
      */
-    public function __construct(\Framework\Application $app)
+    public function __construct(Application $app)
     {
         $this->app = $app;
     }

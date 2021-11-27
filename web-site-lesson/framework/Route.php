@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Framework;
-
 class Route
 {
     public const HTTP_GET = "GET";
@@ -24,7 +22,7 @@ class Route
         self::route(self::HTTP_GET, $route, $cb);
     }
 
-    public static function post(string $route, callable $cb) : void {
+    public static function post(string $route, $cb) : void {
         self::route(self::HTTP_POST, $route, $cb);
     }
 
